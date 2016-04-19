@@ -22,6 +22,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.safeshell.safeshell.fragments.AlertDialogFragment;
 import com.safeshell.safeshell.fragments.MapFragment;
 
 import java.util.ArrayList;
@@ -30,8 +31,11 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener {
 
-    private Boolean isFabOpen = false;
-    private FloatingActionButton fab,fab1,fab2;
+    private static final int REQUEST_EMERGENCY = 0;
+    private static final int REQUEST_NITERIDE = 1;
+
+    private Boolean mAreFabsOpen = false;
+    private FloatingActionButton mFab, mEmergencyFab, mNiteRideFab;
     private Animation fab_open,fab_close,rotate_forward,rotate_backward;
 
      /**
@@ -50,9 +54,9 @@ public class MainActivity extends AppCompatActivity
     private ViewPager mViewPager;
     private TabLayout mTabLayout;
     private int[] tabIcons = {
-            R.drawable.ic_tab_favourite,
+            R.drawable.map,
             R.drawable.ic_tab_call,
-            R.drawable.ic_tab_contacts
+            R.drawable.account_multiple
     };
 
     @Override
@@ -63,7 +67,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
         setupViewPager(mViewPager);
@@ -72,19 +75,19 @@ public class MainActivity extends AppCompatActivity
         mTabLayout.setupWithViewPager(mViewPager);
         setupTabIcons();
 
-        fab = (FloatingActionButton)findViewById(R.id.fab);
-        fab1 = (FloatingActionButton)findViewById(R.id.fab1);
-        fab2 = (FloatingActionButton)findViewById(R.id.fab2);
+        mFab = (FloatingActionButton)findViewById(R.id.fab);
+        mEmergencyFab = (FloatingActionButton)findViewById(R.id.fab1);
+        mNiteRideFab = (FloatingActionButton)findViewById(R.id.fab2);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fab_close);
         rotate_forward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_forward);
         rotate_backward = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate_backward);
-        fab.setOnClickListener(this);
-        fab1.setOnClickListener(this);
-        fab2.setOnClickListener(this);
+        mFab.setOnClickListener(this);
+        mEmergencyFab.setOnClickListener(this);
+        mNiteRideFab.setOnClickListener(this);
 
-        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        /*FloatingActionButton mFab = (FloatingActionButton) findViewById(R.id.mFab);
+        mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -95,17 +98,17 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onClick(View v) {
-        int id = v.getId();
+    public void onClick(View view) {
+        int id = view.getId();
         switch (id) {
             case R.id.fab:
                 animateFAB();
                 break;
             case R.id.fab1:
-
+                showDialog(R.string.call_niteride,R.string.msg_niteride, REQUEST_NITERIDE);
                 break;
             case R.id.fab2:
-
+                showDialog(R.string.call_emergency, R.string.msg_emergency, REQUEST_EMERGENCY);
                 break;
         }
     }
@@ -145,39 +148,63 @@ public class MainActivity extends AppCompatActivity
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFrag(new MapFragment(), "Map");
-        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(2), "TWO");
-        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(3), "THREE");
+        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(2), "Fake Call");
+        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(3), "Friends");
         viewPager.setAdapter(mSectionsPagerAdapter);
     }
 
     public void animateFAB(){
-        if(isFabOpen){
-
-            fab.startAnimation(rotate_backward);
-            fab1.startAnimation(fab_close);
-            fab2.startAnimation(fab_close);
-            fab1.setClickable(false);
-            fab2.setClickable(false);
-            isFabOpen = false;
-
+        if(mAreFabsOpen){
+            mFab.startAnimation(rotate_backward);
+            mEmergencyFab.startAnimation(fab_close);
+            mNiteRideFab.startAnimation(fab_close);
+            mEmergencyFab.setClickable(false);
+            mNiteRideFab.setClickable(false);
+            mAreFabsOpen = false;
             } else {
-
-            fab.startAnimation(rotate_forward);
-            fab1.startAnimation(fab_open);
-            fab2.startAnimation(fab_open);
-            fab1.setClickable(true);
-            fab2.setClickable(true);
-            isFabOpen = true;
-
+            mFab.startAnimation(rotate_forward);
+            mEmergencyFab.startAnimation(fab_open);
+            mNiteRideFab.startAnimation(fab_open);
+            mEmergencyFab.setClickable(true);
+            mNiteRideFab.setClickable(true);
+            mAreFabsOpen = true;
             }
     }
 
-    public void doPositiveClick() {
+    private void showDialog(int title, int msg, int req) {
+        DialogFragment alertDialog = AlertDialogFragment.newInstance(title, msg, req);
+        alertDialog.show(getSupportFragmentManager(), "dialog");
+    }
+
+    public void doPositiveClick(int requestCode) {
+        switch (requestCode) {
+            case REQUEST_EMERGENCY:
+                Snackbar.make(mEmergencyFab, R.string.rsp_emergency, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                break;
+            case REQUEST_NITERIDE:
+                Snackbar.make(mNiteRideFab, R.string.rsp_niteride, Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                break;
+            default:
+                break;
+        }
 
     }
 
-    public void doNegativeClick() {
-
+    public void doNegativeClick(int requestCode) {
+        switch (requestCode) {
+            case REQUEST_EMERGENCY:
+                Snackbar.make(mEmergencyFab, "Alert Canceled", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                break;
+            case REQUEST_NITERIDE:
+                Snackbar.make(mNiteRideFab, "Alert Canceled", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+                break;
+            default:
+                break;
+        }
     }
 
     /**
