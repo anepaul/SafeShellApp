@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeShell UMD</title>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/dataTables.jqueryui.min.js"></script>
+    <link rel="stylesheet" href="styles/ee.css" type="text/css/"/>
+    <link rel="stylesheet" href="styles/dd.css" type="text/css/"/>
+    <link rel="stylesheet" href="styles/main_styles.css" type="text/css"/>
+</head>
+
+<body>
+<div id="header"></div>
+<script>
+    $("#header").load("header.html", function(){document.getElementById("homeLink").className="active";});
+    //$("#footer").load("footer.html");
+</script>
+<section>
+    <h1 class="redHeader">UMD Safety Notices</h1>
+    <table id ="noticeTable" style="margin-left:10%;margin-right:10%;width:80%">
+        <thead>
+            <tr>
+                <th data-priority="2">DATE</th>
+                <th data-priority="1">DESCRIPTION<br>LOCATION</th>
+                <th data-priority="3">UMD CASE NUMBER</th>
+            </tr>
+        </thead>
+        <tr>
+            <td class="date">
+                02/23/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=788"><b>Indecent Exposure</b><br>Mckeldin Library</a>
+            </td>
+            <td class="crimeNumber">
+                2016-10573
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a  class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=784"><b>Indecent Exposure</b><br>Mckeldin Library</a>
+            </td>
+            <td class="crimeNumber">
+                2016-9371
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                11/04/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=770" class="tableLink"><b>Voyeur Incident</b><br>Dorchester Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-48253
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                10/15/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=769" class="tableLink"><b>Voyeur Incident</b><br>Cumberland Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-45019
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                09/18/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=767" class="tableLink"><b>4th Degree Sex Offense Unlawful Touching</b><br>McKeldin Mall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-41290
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                08/22/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=766" class="tableLink"><b>Indecent Exposure</b><br>Leonardtown Apt.</a>
+            </td>
+            <td class="crimeNumber">
+                2015-36935
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=737"><b>Peeping Tom Incident</b><br>Centreville Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2014-13025
+            </td>
+        </tr>
+
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=736"><b>Peeping Tom Incidents</b><br>Bio-Psychology Bldg/LaPlata Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2014-12744/ 2014-12768
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                02/23/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=788"><b>Indecent Exposure</b><br>Mckeldin Library</a>
+            </td>
+            <td class="crimeNumber">
+                2016-10573
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a  class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=784"><b>Indecent Exposure</b><br>Mckeldin Library</a>
+            </td>
+            <td class="crimeNumber">
+                2016-9371
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                11/04/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=770" class="tableLink"><b>Voyeur Incident</b><br>Dorchester Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-48253
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                10/15/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=769" class="tableLink"><b>Voyeur Incident</b><br>Cumberland Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-45019
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                09/18/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=767" class="tableLink"><b>4th Degree Sex Offense Unlawful Touching</b><br>McKeldin Mall</a>
+            </td>
+            <td class="crimeNumber">
+                2015-41290
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                08/22/15
+            </td>
+            <td class="crime">
+                <a href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=766" class="tableLink"><b>Indecent Exposure</b><br>Leonardtown Apt.</a>
+            </td>
+            <td class="crimeNumber">
+                2015-36935
+            </td>
+        </tr>
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=737"><b>Peeping Tom Incident</b><br>Centreville Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2014-13025
+            </td>
+        </tr>
+
+        <tr>
+            <td class="date">
+                02/18/16
+            </td>
+            <td class="crime">
+                <a class="tableLink" href="http://www.umpd.umd.edu/stats/safety_notices_umpd_detail.cfm?id=736"><b>Peeping Tom Incidents</b><br>Bio-Psychology Bldg/LaPlata Hall</a>
+            </td>
+            <td class="crimeNumber">
+                2014-12744/ 2014-12768
+            </td>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function() {
+            $('#noticeTable').DataTable();
+        } );
+    </script>
+    <br>
+    <br>
+    <h1 class="redHeader">Report Incident</h1>
+    <h3 class="subRedHeader">Report a case of Sexual Assualt or share your story below</h3>
+    <form id="reportForm">
+        <textarea name="story" style="width:80%;display:block;margin-left:auto;margin-right:auto;" form="reportForm" rows="10"></textarea>
+        <input type="submit" style="margin-left:10%;margin-top:1%;width:5em;height:2em;font-size:18pt"/>
+    </form>
+    <br><br>
+    <h1 class="redHeader">Rate This App!</h1>
+    <fieldset class="rating">
+        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+        <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+    </fieldset>
+    <!--p style="margin-left:10em;">Date: <input type="text" id="datepicker"></p>
+    <script>
+        $(function() {
+            $( "#datepicker" ).datepicker();
+        });
+    </script-->
+</section>
+<br><br>
+</body>
+</html>
