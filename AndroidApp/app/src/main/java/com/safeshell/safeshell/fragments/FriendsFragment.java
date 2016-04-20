@@ -20,13 +20,14 @@ import java.util.Random;
  */
 public class FriendsFragment extends ListFragment {
 
-    List<Friend> mFriendsList = new ArrayList<>();
+    List<Friend> mFriendsList;
     ArrayAdapter<Friend> mFriendAdapter;
     Random mRandom = new Random();
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mFriendsList = new ArrayList<>();
         mFriendAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1);
         mFriendsList.add(new Friend("Anumeet", "Needs Sleep"));
         mFriendsList.add(new Friend("Matt", "Happy"));
