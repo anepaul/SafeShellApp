@@ -22,7 +22,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.safeshell.safeshell.fragments.AlertDialogFragment;
+import com.safeshell.safeshell.fragments.FriendsFragment;
 import com.safeshell.safeshell.fragments.MapFragment;
 
 import java.util.ArrayList;
@@ -149,7 +151,7 @@ public class MainActivity extends AppCompatActivity
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFrag(new MapFragment(), "Map");
         mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(2), "Fake Call");
-        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(3), "Friends");
+        mSectionsPagerAdapter.addFrag(new FriendsFragment(), "Friends");
         viewPager.setAdapter(mSectionsPagerAdapter);
     }
 
@@ -205,6 +207,12 @@ public class MainActivity extends AppCompatActivity
             default:
                 break;
         }
+    }
+
+    public void showFriendOnMap(MarkerOptions friendMarker) {
+        MapFragment mapFragment = (MapFragment) mSectionsPagerAdapter.getItem(0);
+        mapFragment.findFriend(friendMarker);
+        mViewPager.setCurrentItem(0, true);
     }
 
     /**

@@ -72,7 +72,7 @@ public class MapFragment extends SupportMapFragment
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(38.9826527,-76.9379726))
                 .title("Police Station")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.police)));
+                .icon(BitmapDescriptorFactory.fromResource(android.R.drawable.ic_dialog_alert)));
         mMap.setBuildingsEnabled(true);
         mMap.setIndoorEnabled(true);
         CircleOptions circleOptions = new CircleOptions();
@@ -85,5 +85,10 @@ public class MapFragment extends SupportMapFragment
         mMap.addCircle(circleOptions.center(new LatLng(38.9806991,-76.9386753)));
         mMap.setMyLocationEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(umdStamp, 14.0f));
+    }
+
+    public void findFriend(MarkerOptions friend) {
+        mMap.addMarker(friend);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(friend.getPosition()));
     }
 }
