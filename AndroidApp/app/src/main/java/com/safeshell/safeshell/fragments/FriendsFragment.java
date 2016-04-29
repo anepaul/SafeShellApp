@@ -22,6 +22,7 @@ public class FriendsFragment extends ListFragment {
 
     List<Friend> mFriendsList;
     ArrayAdapter<Friend> mFriendAdapter;
+    // locator for display
     Random mRandom = new Random();
 
     @Override
