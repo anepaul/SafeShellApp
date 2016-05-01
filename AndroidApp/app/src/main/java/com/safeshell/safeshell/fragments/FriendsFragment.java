@@ -30,6 +30,8 @@ public class FriendsFragment extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
         mFriendsList = new ArrayList<>();
         mFriendAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1);
+       
+        // Adding friends onto the Friend's List 
         mFriendsList.add(new Friend("Anumeet", "Needs Sleep"));
         mFriendsList.add(new Friend("Matt", "Happy"));
         mFriendsList.add(new Friend("Henry", "Angry"));
@@ -55,16 +57,34 @@ public class FriendsFragment extends ListFragment {
         Bitmap profile;
         LatLng location;
 
+        //Constructor for creating Friends with the name and status 
         public Friend(String name, String status) {
             this.name = name;
             this.status = status;
             location = new LatLng((mRandom.nextFloat() * 180) - 90, (mRandom.nextFloat() * 360) - 180);
         }
 
+        // Constructor for Friend with name, status, and a profile which is their profile picture 
         public Friend(String name, String status, Bitmap profile) {
             this.name = name;
             this.status = status;
             this.profile = profile;
+        }
+
+        // Method to get Friend's status 
+        public String getStatus(){
+            return this.status;
+        }
+
+        // Method to get Friend's profile 
+        public Bitmap getProfile(){
+            return this.profile;
+        } 
+
+        // Method to get distance from Friend's current location
+        public int getDistance(){
+            // Need to work on 
+            return 0; 
         }
 
         @Override
