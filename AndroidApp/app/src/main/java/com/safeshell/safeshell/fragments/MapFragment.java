@@ -21,6 +21,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.safeshell.safeshell.R;
 
+import java.security.SecurityPermission;
+
 /**
  * Created by ANepaul on 4/18/16.
  */
@@ -72,7 +74,7 @@ public class MapFragment extends SupportMapFragment
         LatLng umdStamp = new LatLng(38.9881238, -76.9447425);
         mMap.addMarker(new MarkerOptions().position(umdStamp).title("Destination"));
         mMap.addMarker(new MarkerOptions()
-                .position(new LatLng(38.9826527,-76.9379726))
+                .position(new LatLng(38.9826527, -76.9379726))
                 .title("Police Station")
                 .icon(BitmapDescriptorFactory.fromResource(android.R.drawable.ic_dialog_alert)));
         mMap.setBuildingsEnabled(true);
@@ -84,9 +86,13 @@ public class MapFragment extends SupportMapFragment
                 .radius(300.0)
                 .visible(true);
         mMap.addCircle(circleOptions.center(new LatLng(38.9945048,-76.9345877)));
-        mMap.addCircle(circleOptions.center(new LatLng(38.9806991,-76.9386753)));
-        mMap.setMyLocationEnabled(true);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(umdStamp, 14.0f));
+        mMap.addCircle(circleOptions.center(new LatLng(38.9806991, -76.9386753)));
+        try {
+            mMap.setMyLocationEnabled(true);
+        }catch(SecurityException e){
+            e.printStackTrace();
+        }
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(umdStamp, 14.0f));
     }
 
     @Override
