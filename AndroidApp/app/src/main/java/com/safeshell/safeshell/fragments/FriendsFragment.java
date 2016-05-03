@@ -3,6 +3,7 @@ package com.safeshell.safeshell.fragments;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -11,6 +12,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.safeshell.safeshell.MainActivity;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -102,7 +104,7 @@ public class FriendsFragment extends ListFragment {
             int kmInDec =  Integer.valueOf(newFormat.format(km));
             double meter=valueResult%1000;
             int  meterInDec= Integer.valueOf(newFormat.format(meter));
-            Log.i("Radius Value",""+valueResult+"   KM  "+kmInDec+" Meter   "+meterInDec);
+            Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec + " Meter   " + meterInDec);
 
             return Radius * c;
      }
