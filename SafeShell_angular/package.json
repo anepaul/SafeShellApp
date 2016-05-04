@@ -6,8 +6,9 @@
     "angular": "^1.5.5",
     "angular-animate": "^1.5.5",
     "angular-aria": "^1.5.5",
-    "angular-messages": "^1.5.5",
-    "angular-material": "git+ssh://git@github.com/angular/bower-material.git#master"
+    "angular-material": "git+ssh://git@github.com/angular/bower-material.git#master",
+    "angular-material-data-table": "^0.10.9",
+    "angular-messages": "^1.5.5"
   },
   "scripts": {
     "postinstall": "bower update",
