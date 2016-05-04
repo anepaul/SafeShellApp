@@ -5,27 +5,23 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-
+import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.safeshell.safeshell.R;
 
-import java.io.UnsupportedEncodingException;
-
-import static android.widget.Toast.*;
+import java.security.SecurityPermission;
 
 /**
  * Created by ANepaul on 4/18/16.
@@ -36,15 +32,14 @@ public class MapFragment extends SupportMapFragment
     private static final int REQUEST_LOC_PERM = 321;
     private GoogleMap mMap;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
                 && (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED
+                    != PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED)) {
+                    != PackageManager.PERMISSION_GRANTED)) {
             getActivity().requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOC_PERM);
             return;
         }
@@ -75,27 +70,23 @@ public class MapFragment extends SupportMapFragment
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-       //UMD Stamp Pin
+        // Add a marker in Sydney and move the camera
         LatLng umdStamp = new LatLng(38.9881238, -76.9447425);
         mMap.addMarker(new MarkerOptions().position(umdStamp).title("Destination"));
-
-
         mMap.addMarker(new MarkerOptions()
                 .position(new LatLng(38.9826527, -76.9379726))
                 .title("Police Station")
                 .icon(BitmapDescriptorFactory.fromResource(android.R.drawable.ic_dialog_alert)));
         mMap.setBuildingsEnabled(true);
         mMap.setIndoorEnabled(true);
-
         CircleOptions circleOptions = new CircleOptions();
-        // Dummy Red Zones
+
         circleOptions.fillColor(Color.argb(100,255,0,0))
                 .strokeColor(Color.argb(200,255,0,0))
                 .radius(300.0)
                 .visible(true);
         mMap.addCircle(circleOptions.center(new LatLng(38.9945048,-76.9345877)));
         mMap.addCircle(circleOptions.center(new LatLng(38.9806991, -76.9386753)));
-        // Setting current location based on GPS on phone.
         try {
             mMap.setMyLocationEnabled(true);
         }catch(SecurityException e){
