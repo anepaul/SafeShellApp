@@ -34,10 +34,14 @@ public class FriendsFragment extends ListFragment {
         mFriendAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1);
        
         // Adding friends onto the Friend's List 
-        mFriendsList.add(new Friend("Anumeet", "Needs Sleep"));
-        mFriendsList.add(new Friend("Matt", "Happy"));
-        mFriendsList.add(new Friend("Henry", "Angry"));
-        mFriendsList.add(new Friend("Stephen", "..."));
+        mFriendsList.add(new Friend("Anumeet", "Needs Sleep", 1));
+        mFriendsList.add(new Friend("Matt", "Happy", 2));
+        mFriendsList.add(new Friend("Henry", "Angry", 1));
+        mFriendsList.add(new Friend("Stephen", "...", 1));
+        mFriendsList.add(new Friend("Jenny", ":)",2));
+        mFriendsList.add(new Friend("Cathy", "Mad",4));
+        mFriendsList.add(new Friend("Morgan", "Excited",2));
+        mFriendsList.add(new Friend("Kathy", "Finished with finals",3));
         mFriendAdapter.clear();
         mFriendAdapter.addAll(mFriendsList);
         setListAdapter(mFriendAdapter);
@@ -56,15 +60,20 @@ public class FriendsFragment extends ListFragment {
     private class Friend {
         String name;
         String status;
+        int level; 
         Bitmap profile;
         LatLng location;
 
-        //Constructor for creating Friends with the name and status 
-        public Friend(String name, String status) {
+        //Constructor for creating Friends with the name, status, and level 
+        // Level is for how close this friend is to you, therefore having different levels of information  
+        public Friend(String name, String status, int level) {
             this.name = name;
             this.status = status;
+            this.level = level;
             location = new LatLng((mRandom.nextFloat() * 180) - 90, (mRandom.nextFloat() * 360) - 180);
         }
+        
+
 
         // Constructor for Friend with name, status, and a profile which is their profile picture 
         public Friend(String name, String status, Bitmap profile) {

@@ -70,7 +70,7 @@ public class MapFragment extends SupportMapFragment
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in UMD
         LatLng umdStamp = new LatLng(38.9881238, -76.9447425);
         mMap.addMarker(new MarkerOptions().position(umdStamp).title("Destination"));
         mMap.addMarker(new MarkerOptions()
