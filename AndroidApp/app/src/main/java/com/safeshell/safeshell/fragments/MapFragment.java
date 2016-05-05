@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -25,6 +26,7 @@ import com.safeshell.safeshell.R;
  */
 public class MapFragment extends SupportMapFragment
         implements OnMapReadyCallback {
+    private final String TAG = getClass().getSimpleName();
     private static final int REQUEST_LOC_PERM = 321;
     private GoogleMap mMap;
 
@@ -87,8 +89,22 @@ public class MapFragment extends SupportMapFragment
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(umdStamp, 14.0f));
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     public void findFriend(MarkerOptions friend) {
-        mMap.addMarker(friend);
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(friend.getPosition()));
+        if (mMap != null) {
+            mMap.addMarker(friend);
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(friend.getPosition()));
+        } else {
+            Log.i(TAG, "findFriend: Map was not set");
+        }
     }
 }
