@@ -25,18 +25,18 @@ public class FakeCallFragment extends ListFragment {
         super.onViewCreated(view, savedInstanceState);
         mAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1);
 
-        // Adding friends onto the Friend's List
+        // Adding Fake call options 10 seconds, 15 seconds, 20 seconds, etc 
         mAdapter.clear();
         mAdapter.addAll(10,15,20,30,45,60);
         setListAdapter(mAdapter);
         View v = getLayoutInflater(null).inflate(R.layout.header_fakecall, (ViewGroup) view.getRootView(), false);
         getListView().addHeaderView(v);
     }
-    /* dispatches fake call */
+    /* Dispatches fake call based on which option is picked */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        if (position > 0)
+        if (position >= 0)
         ((MainActivity)getActivity()).showSnackBar(v, mAdapter.getItem(position-1));
     }
 }
