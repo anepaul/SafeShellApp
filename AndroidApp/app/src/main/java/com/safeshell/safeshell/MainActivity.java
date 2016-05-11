@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
             R.drawable.ic_tab_call,
             R.drawable.account_multiple
     };
-
+        /* initialize contents */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity
         });*/
 
     }
-
+/* responds to features */
     @Override
     public void onClick(View view) {
         int id = view.getId();
@@ -151,13 +151,13 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
+/* do icon layout*/
     private void setupTabIcons() {
         mTabLayout.getTabAt(0).setIcon(tabIcons[0]);
         mTabLayout.getTabAt(1).setIcon(tabIcons[1]);
         mTabLayout.getTabAt(2).setIcon(tabIcons[2]);
     }
-
+/* main view */
     private void setupViewPager(ViewPager viewPager) {
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity
         mSectionsPagerAdapter.addFrag(new FriendsFragment(), "Friends");
         viewPager.setAdapter(mSectionsPagerAdapter);
     }
-
+/* aniation for the buttons */
     public void animateFAB(){
         if(mAreFabsOpen){
             mFab.startAnimation(rotate_backward);
@@ -185,12 +185,12 @@ public class MainActivity extends AppCompatActivity
             mAreFabsOpen = true;
             }
     }
-
+/* dialog displayer */
     private void showDialog(int title, int msg, int req) {
         DialogFragment alertDialog = AlertDialogFragment.newInstance(title, msg, req);
         alertDialog.show(getSupportFragmentManager(), "dialog");
     }
-
+/* click handler for the main */
     public void doPositiveClick(int requestCode) {
         switch (requestCode) {
             case REQUEST_EMERGENCY:
@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity
         }
 
     }
-
+/* click handler for the main */
     public void doNegativeClick(int requestCode) {
         switch (requestCode) {
             case REQUEST_EMERGENCY:
@@ -219,13 +219,13 @@ public class MainActivity extends AppCompatActivity
                 break;
         }
     }
-
+/* goes to the friends tab */
     public void showFriendOnMap(MarkerOptions friendMarker) {
         MapFragment mapFragment = (MapFragment) mSectionsPagerAdapter.getItem(0);
         mapFragment.findFriend(friendMarker);
         mViewPager.setCurrentItem(0, true);
     }
-
+/* creates the snack bar */
     public void showSnackBar(View v, int time) {
         Snackbar.make(v, "You will recieve a fake call in " + time + " seconds", Snackbar.LENGTH_LONG).show();
     }
@@ -241,22 +241,22 @@ public class MainActivity extends AppCompatActivity
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }
-
+        /* high level abstration for item */
         @Override
         public Fragment getItem(int position) {
             return mFragmentList.get(position);
         }
-
+/* high level abstration for count */
         @Override
         public int getCount() {
             return mFragmentList.size();
         }
-
+/* high level abstration for frag */
         public void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
             mFragmentTitleList.add(title);
         }
-
+/* high level abstration for title */
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
