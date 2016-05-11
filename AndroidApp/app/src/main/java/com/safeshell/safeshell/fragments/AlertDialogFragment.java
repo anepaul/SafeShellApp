@@ -37,6 +37,7 @@ public class AlertDialogFragment extends AppCompatDialogFragment {
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle(title)
                 .setMessage(msg)
+                // For positive button, clicking Ok
                 .setPositiveButton(android.R.string.yes,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
@@ -44,6 +45,7 @@ public class AlertDialogFragment extends AppCompatDialogFragment {
                             }
                         }
                 )
+                // For negative button, clicking cancel
                 .setNegativeButton(android.R.string.no,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
