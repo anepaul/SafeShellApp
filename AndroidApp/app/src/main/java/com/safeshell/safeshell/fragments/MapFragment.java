@@ -31,7 +31,7 @@ public class MapFragment extends SupportMapFragment
     private final String TAG = getClass().getSimpleName();
     private static final int REQUEST_LOC_PERM = 321;
     private GoogleMap mMap;
-
+        /* map initilizer */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +45,7 @@ public class MapFragment extends SupportMapFragment
         }
         getMapAsync(this);
     }
-
+        /* permission request for the google map feature */
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -94,17 +94,17 @@ public class MapFragment extends SupportMapFragment
         }
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(umdStamp, 14.0f));
     }
-
+        /* pause the program */
     @Override
     public void onPause() {
         super.onPause();
     }
-
+/* resume the program */
     @Override
     public void onResume() {
         super.onResume();
     }
-
+/* locate a friend on google map */
     public void findFriend(MarkerOptions friend) {
         if (mMap != null) {
             mMap.addMarker(friend);
