@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Angular Material - Starter App</title>
+    <title>Safe Shell</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/app.css"/>
   </head>
 
-  <body ng-app="starterApp" layout="column" ng-controller="UserController as ul" ng-cloak>
+  <body ng-app="app" layout="column" ng-controller="UserController as ul" ng-cloak>
 
     <md-toolbar layout="row">
       <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
@@ -32,17 +32,11 @@
                 <md-button>Historical Reports</md-button>
             </md-list-item>
             <md-list-item>
-                <md-button>Report an Incident</md-button>
+                <md-button ng-click="showAdvanced($event)" >Report an Incident</md-button>
             </md-list-item>
             <md-list-item>
                 <md-button>About Us</md-button>
             </md-list-item>
-            <!--<md-list-item ng-repeat="it in ul.users">
-                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                  <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                  {{it.name}}
-                </md-button>
-            </md-list-item>-->
           </md-list>
         </md-sidenav>
         
@@ -106,7 +100,7 @@
     <script type="text/javascript">
 
           angular
-              .module('starterApp', ['ngMaterial', 'md.data.table', 'users'])
+              .module('app', ['ngMaterial', 'md.data.table', 'users'])
               .config(function($mdThemingProvider, $mdIconProvider){
 
                   $mdIconProvider

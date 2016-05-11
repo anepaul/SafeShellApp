@@ -24,20 +24,20 @@ public class FriendsFragment extends ListFragment {
 
     List<Friend> mFriendsList;
     ArrayAdapter<Friend> mFriendAdapter;
-    // locator for display
-    Random mRandom = new Random();
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFriendsList = new ArrayList<>();
-        mFriendAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1);
+        mFriendAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1);
        
         // Adding friends onto the Friend's List 
         mFriendsList.add(new Friend("Anumeet", "Needs Sleep"));
-        mFriendsList.add(new Friend("Matt", "Happy"));
+        mFriendsList.add(new Friend("Matt R.", "Happy"));
         mFriendsList.add(new Friend("Henry", "Angry"));
         mFriendsList.add(new Friend("Stephen", "..."));
+        mFriendsList.add(new Friend("Jon", "Chillin'"));
+        mFriendsList.add(new Friend("Matt M.", "Grading"));
         mFriendAdapter.clear();
         mFriendAdapter.addAll(mFriendsList);
         setListAdapter(mFriendAdapter);
@@ -53,41 +53,43 @@ public class FriendsFragment extends ListFragment {
         ((MainActivity)getActivity()).showFriendOnMap(friendMarker);
     }
 
-    private class Friend {
-        String name;
-        String status;
-        Bitmap profile;
-        LatLng location;
+    public static class Friend {
+        public String name;
+        public String status;
+        public Bitmap profile;
+        public LatLng location;
+        // locator for display
+        Random mRandom = new Random();
 
-        //Constructor for creating Friends with the name and status 
+        //Constructor for creating Friends with the name and status
         public Friend(String name, String status) {
             this.name = name;
             this.status = status;
             location = new LatLng((mRandom.nextFloat() * 180) - 90, (mRandom.nextFloat() * 360) - 180);
         }
 
-        // Constructor for Friend with name, status, and a profile which is their profile picture 
+        // Constructor for Friend with name, status, and a profile which is their profile picture
         public Friend(String name, String status, Bitmap profile) {
             this.name = name;
             this.status = status;
             this.profile = profile;
         }
 
-        // Method to get Friend's status 
+        // Method to get Friend's status
         public String getStatus(){
             return this.status;
         }
 
-        // Method to get Friend's profile 
+        // Method to get Friend's profile
         public Bitmap getProfile(){
             return this.profile;
-        } 
+        }
 
         // Method to get distance from Friend's current location
         // From http://stackoverflow.com/questions/14394366/find-distance-between-two-points-on-map-using-google-map-api-v2
-        public double CalculationByDistance(LatLng Dest) {
-        // Radius of earth in Km  
-            int Radius=6371;       
+        public double calculationByDistance(LatLng Dest) {
+            // Radius of earth in Km
+            int Radius=6371;
             double lat1 = Dest.latitude;
             double lat2 = this.location.latitude;
             double lon1 = Dest.longitude;
@@ -95,8 +97,8 @@ public class FriendsFragment extends ListFragment {
             double dLat = Math.toRadians(lat2-lat1);
             double dLon = Math.toRadians(lon2-lon1);
             double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-            Math.sin(dLon/2) * Math.sin(dLon/2);
+                    Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                            Math.sin(dLon/2) * Math.sin(dLon/2);
             double c = 2 * Math.asin(Math.sqrt(a));
             double valueResult= Radius*c;
             double km=valueResult/1;
@@ -107,7 +109,7 @@ public class FriendsFragment extends ListFragment {
             Log.i("Radius Value", "" + valueResult + "   KM  " + kmInDec + " Meter   " + meterInDec);
 
             return Radius * c;
-     }
+        }
 
         @Override
         public String toString() {

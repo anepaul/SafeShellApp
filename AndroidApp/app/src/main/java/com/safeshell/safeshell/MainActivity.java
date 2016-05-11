@@ -12,18 +12,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.TextView;
 
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.safeshell.safeshell.fragments.AlertDialogFragment;
+import com.safeshell.safeshell.fragments.FakeCallFragment;
 import com.safeshell.safeshell.fragments.FriendsFragment;
 import com.safeshell.safeshell.fragments.MapFragment;
 
@@ -134,6 +132,20 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            View v = findViewById(R.id.search);
+            if (null != v) {
+                if (v.getVisibility() == View.GONE) {
+                    v.clearFocus();
+                    v.setVisibility(View.VISIBLE);
+                    item.setIcon(android.R.drawable.ic_menu_close_clear_cancel);
+                } else {
+                    v.clearFocus();
+                    v.setVisibility(View.GONE);
+                    item.setIcon(android.R.drawable.ic_menu_search);
+                }
+
+            }
+            v.setVisibility(View.VISIBLE);
             return true;
         }
 
@@ -151,7 +163,7 @@ public class MainActivity extends AppCompatActivity
         // primary sections of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFrag(new MapFragment(), "Map");
-        mSectionsPagerAdapter.addFrag(PlaceholderFragment.newInstance(2), "Fake Call");
+        mSectionsPagerAdapter.addFrag(new FakeCallFragment(), "Fake Call");
         mSectionsPagerAdapter.addFrag(new FriendsFragment(), "Friends");
         viewPager.setAdapter(mSectionsPagerAdapter);
     }
@@ -198,12 +210,10 @@ public class MainActivity extends AppCompatActivity
     public void doNegativeClick(int requestCode) {
         switch (requestCode) {
             case REQUEST_EMERGENCY:
-                Snackbar.make(mEmergencyFab, "Alert Canceled", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(mEmergencyFab, "Alert Canceled", Snackbar.LENGTH_LONG).show();
                 break;
             case REQUEST_NITERIDE:
-                Snackbar.make(mNiteRideFab, "Alert Canceled", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Snackbar.make(mNiteRideFab, "Alert Canceled", Snackbar.LENGTH_LONG).show();
                 break;
             default:
                 break;
@@ -216,39 +226,8 @@ public class MainActivity extends AppCompatActivity
         mViewPager.setCurrentItem(0, true);
     }
 
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
-        /**
-         * The fragment argument representing the section number for this
-         * fragment.
-         */
-        private static final String ARG_SECTION_NUMBER = "section_number";
-
-        public PlaceholderFragment() {
-        }
-
-        /**
-         * Returns a new instance of this fragment for the given section
-         * number.
-         */
-        public static PlaceholderFragment newInstance(int sectionNumber) {
-            PlaceholderFragment fragment = new PlaceholderFragment();
-            Bundle args = new Bundle();
-            args.putInt(ARG_SECTION_NUMBER, sectionNumber);
-            fragment.setArguments(args);
-            return fragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
-            return rootView;
-        }
+    public void showSnackBar(View v, int time) {
+        Snackbar.make(v, "You will recieve a fake call in " + time + " seconds", Snackbar.LENGTH_LONG).show();
     }
 
     /**

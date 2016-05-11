@@ -23,6 +23,11 @@
             app:layout_scrollFlags="scroll|enterAlways"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/search"
+                android:visibility="gone" />
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout
