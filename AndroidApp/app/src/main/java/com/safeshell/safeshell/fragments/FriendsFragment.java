@@ -24,7 +24,7 @@ public class FriendsFragment extends ListFragment {
 
     List<Friend> mFriendsList;
     ArrayAdapter<Friend> mFriendAdapter;
-
+    /* initialize view */
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -46,7 +46,7 @@ public class FriendsFragment extends ListFragment {
         mFriendAdapter.addAll(mFriendsList);
         setListAdapter(mFriendAdapter);
     }
-
+    /* list friends */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
@@ -130,7 +130,7 @@ public class FriendsFragment extends ListFragment {
 
             return Radius * c;
         }
-
+        /* tester string for friends feature*/
         @Override
         public String toString() {
             final StringBuffer sb = new StringBuffer();
