@@ -6,3 +6,7 @@ The mobile application is in the AndroidApp Folder. The folder SafeShell_Angular
 The Android App largely uses the Google Maps API for its homepage and the website contains data from the UMD Police Department Website.
 
 
+How to run the Mobile App, SafeShell: 
+SafeShell can be ran in Android Studios on the AndroidApp folder. In SafeShellApp/AndroidApp/app/src/main/java/com/safeshell/safeshell/, you run the MainActivity to start the application in Android Studio or you can download the apk we have on the repository onto your android phone and run it from there. 
+
+How to run the website: 
