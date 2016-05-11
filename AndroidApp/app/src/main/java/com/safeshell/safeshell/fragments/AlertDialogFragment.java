@@ -16,7 +16,7 @@ public class AlertDialogFragment extends AppCompatDialogFragment {
     public static final String DIALOG_TITLE = "title";
     public static final String DIALOG_MESSAGE = "message";
     public static final String DIALOG_REQUEST = "request";
-
+    /* initializer */
     public static AlertDialogFragment newInstance(int title, int message, int requestCode) {
         AlertDialogFragment frag = new AlertDialogFragment();
         Bundle args = new Bundle();
@@ -26,7 +26,7 @@ public class AlertDialogFragment extends AppCompatDialogFragment {
         frag.setArguments(args);
         return frag;
     }
-
+    /* creates dialog for the alert */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         int title = getArguments().getInt(DIALOG_TITLE);
