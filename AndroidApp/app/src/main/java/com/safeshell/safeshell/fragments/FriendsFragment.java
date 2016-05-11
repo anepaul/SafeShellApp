@@ -38,6 +38,10 @@ public class FriendsFragment extends ListFragment {
         mFriendsList.add(new Friend("Stephen", "..."));
         mFriendsList.add(new Friend("Jon", "Chillin'"));
         mFriendsList.add(new Friend("Matt M.", "Grading"));
+        mFriendsList.add(new Friend("Jenny", ":)",2));
+        mFriendsList.add(new Friend("Cathy", "Mad",4));
+        mFriendsList.add(new Friend("Moira", "Excited",2));
+        mFriendsList.add(new Friend("Kathy", "Finished with finals",3));
         mFriendAdapter.clear();
         mFriendAdapter.addAll(mFriendsList);
         setListAdapter(mFriendAdapter);
@@ -53,6 +57,7 @@ public class FriendsFragment extends ListFragment {
         ((MainActivity)getActivity()).showFriendOnMap(friendMarker);
     }
 
+<<<<<<< HEAD
     public static class Friend {
         public String name;
         public String status;
@@ -63,10 +68,25 @@ public class FriendsFragment extends ListFragment {
 
         //Constructor for creating Friends with the name and status
         public Friend(String name, String status) {
+=======
+    private class Friend {
+        String name;
+        String status;
+        int level; 
+        Bitmap profile;
+        LatLng location;
+
+        //Constructor for creating Friends with the name, status, and level 
+        // Level is for how close this friend is to you, therefore having different levels of information  
+        public Friend(String name, String status, int level) {
+>>>>>>> 58c368a2d7c987b603f46186878f4855c9c199fc
             this.name = name;
             this.status = status;
+            this.level = level;
             location = new LatLng((mRandom.nextFloat() * 180) - 90, (mRandom.nextFloat() * 360) - 180);
         }
+        
+
 
         // Constructor for Friend with name, status, and a profile which is their profile picture
         public Friend(String name, String status, Bitmap profile) {
