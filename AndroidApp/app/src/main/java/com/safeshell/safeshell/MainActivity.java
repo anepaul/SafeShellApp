@@ -167,7 +167,7 @@ public class MainActivity extends AppCompatActivity
         mSectionsPagerAdapter.addFrag(new FriendsFragment(), "Friends");
         viewPager.setAdapter(mSectionsPagerAdapter);
     }
-/* aniation for the buttons */
+/* anim`ation for the buttons */
     public void animateFAB(){
         if(mAreFabsOpen){
             mFab.startAnimation(rotate_backward);
