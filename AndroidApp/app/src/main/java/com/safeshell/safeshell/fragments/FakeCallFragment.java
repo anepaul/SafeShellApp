@@ -19,7 +19,7 @@ import com.safeshell.safeshell.R;
 public class FakeCallFragment extends ListFragment {
 
     ArrayAdapter<Integer> mAdapter;
-
+    /* initialize view */ 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -32,7 +32,7 @@ public class FakeCallFragment extends ListFragment {
         View v = getLayoutInflater(null).inflate(R.layout.header_fakecall, (ViewGroup) view.getRootView(), false);
         getListView().addHeaderView(v);
     }
-
+    /* dispatches fake call */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
